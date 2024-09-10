@@ -15,9 +15,9 @@ The app is ideal for users who value privacy and need a reliable, user-friendly 
 
 Before setting up the app, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/){:target="_blank"} (version 14 or higher)
-- npm or [yarn](https://yarnpkg.com/){:target="_blank"}
-- [Expo CLI](https://docs.expo.dev/get-started/installation/){:target="_blank"}
+- [Node.js](https://nodejs.org/) (version 20.11.1 or higher)
+- npm or [yarn](https://yarnpkg.com/)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
 
 ## Installation
 
