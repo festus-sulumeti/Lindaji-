@@ -47,7 +47,7 @@ To enable specific features of the app, install additional packages using:
 
 ```bash
 
-npx expo install expo-local-authentication react-native-reanimated expo-haptics
+npx expo install expo-local-authentication react-native-mmkv react-native-reanimated expo-haptics
 
 ```
 Here's why these packages are needed:
