@@ -32,7 +32,7 @@ git clone https://github.com/festus-sulumeti/Lindaji-.git
 
 ```
 
-2.Install Dependencies
+2. Install Dependencies
 Navigate to your project folder and install the required dependencies:
 
 ```bash
