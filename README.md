@@ -61,4 +61,4 @@ You can scan the QR code with the Expo Go app or run it on a simulator by pressi
 
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more information.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more information.
