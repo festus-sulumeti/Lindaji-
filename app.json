@@ -3,13 +3,24 @@
     "name": "Lindaji",
     "slug": "Lindaji",
     "version": "1.0.0",
-    "scheme": "Lindaji",
+    "scheme": ["Lindaji"],
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "newArchEnabled": true
+          },
+          "android": {
+            "newArchEnabled": true
+          }
+        }
+      ],
       "expo-router",
       [
         "expo-local-authentication",
