@@ -58,7 +58,16 @@ Here's why these packages are needed:
     4. react-native-mmkv: Offers a high-performance, persistent storage solution using the MMKV library. It's used for securely storing sensitive user data and preferences, ensuring that data remains secure and quickly accessible.
 
 
-### 4. Run the Application
+### 4. Prepare the Project for Building
+Run the following command to generate the native code required for building your app:
+```bash
+npx expo prebuild
+```
+
+The expo prebuild command prepares your project by generating the necessary native files and configurations, ensuring that everything is set up correctly for building and deploying your app. This step is crucial for integrating custom native modules or configurations and updating native project files based on your configuration changes.
+
+
+### 5. Run the Application
 To run the app on an iOS or Android simulator (or a real device), use:
 
 ```bash
