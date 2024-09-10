@@ -55,7 +55,7 @@ Here's why these packages are needed:
     1. expo-local-authentication: Provides biometric authentication capabilities like Face ID or fingerprint recognition, which are essential for the app's secure login feature.
     2. react-native-reanimated: Enables smooth and complex animations for a responsive and interactive user interface.
     3. expo-haptics: Adds haptic feedback to enhance user experience by providing tactile responses to user interactions.
-
+    4. react-native-mmkv: Offers a high-performance, persistent storage solution using the MMKV library. It's used for securely storing sensitive user data and preferences, ensuring that data remains secure and quickly accessible.
 
 
 ### 4. Run the Application
