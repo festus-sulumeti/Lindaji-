@@ -32,7 +32,7 @@ git clone https://github.com/festus-sulumeti/Lindaji-.git
 
 ```
 
-2. Install Dependencies
+## 2. Install Dependencies
 Navigate to your project folder and install the required dependencies:
 
 ```bash
@@ -42,7 +42,7 @@ npm install
 
 ```
 
-3. Install Additional Packages
+### 3. Install Additional Packages
 To enable specific features of the app, install additional packages using:
 
 ```bash
@@ -58,7 +58,7 @@ Here's why these packages are needed:
 
 
 
-4. Run the Application
+### 4. Run the Application
 To run the app on an iOS or Android simulator (or a real device), use:
 
 ```bash
