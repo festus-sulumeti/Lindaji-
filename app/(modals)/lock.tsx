@@ -78,7 +78,18 @@ const lock = () => {
           <TouchableOpacity onPress={() => onNumberPress(0)}>
             <Text style={styles.number}>0</Text>
           </TouchableOpacity>
+
+       <View style={{ minWidth: 30}}>
+           {code.length > 0 && (
+                  <TouchableOpacity onPress={numberBasckspace}>
+                  <MaterialCommunityIcons name="backspace" size={26} color="black" /> 
+                </TouchableOpacity>
+           )}
+      
+       </View>
       </View>
+
+      <Text  style={{alignSelf: 'center', color: '#303BED', fontWeight: '500', fontSize:18}}>Forgot your passcode?</Text>
       </View>
     </SafeAreaView>
   )
