@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'expo-router';
-import { SafeAreaView, Stylesheet } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const lock = () => {
 
@@ -17,17 +17,46 @@ const lock = () => {
 
   return (
     <SafeAreaView>
-      <Text>lock</Text>
+      <Text>Welcome back Festus</Text>
+
+      <View style={styles.codeView}>
+        {codeLength.map((_, i) => (
+          <View key={i} style={[styles.codeEmpty, {backgroundColor: code[i] ? 'black' : 'white'}]} />
+        ))}
+      </View>
     </SafeAreaView>
   )
 };
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
   greeting: {
     fontSize: 24,
     fontWeight: 'bold',
     marginTop:80,
     alignSelf: 'center'
+  }, 
+
+  codeView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap:20,
+    marginVertical: 100
+  },
+
+  codeEmpty: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+  },
+
+  numbersView: {
+    marginHorizontal: 80,
+    gap: 60,
+  },
+  
+  number: {
+    fontSize: 32,
   }
 
 });
