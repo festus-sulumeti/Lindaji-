@@ -24,7 +24,7 @@ export const UserInactivityProvider = ( { children }: any ) => {
     const handleAppStateChange = (nextAppState: any) =>{
         console.log('appSate', appState.current, nextAppState);
         if (nextAppState === 'inactive'){
-            router.push('(modals)/white');
+            router.push('/(modals)/white');
         } else{
             if(router.canGoBack()){
                 router.back();
@@ -37,7 +37,7 @@ export const UserInactivityProvider = ( { children }: any ) => {
             const elapsed = Date.now() - (storage.getNumber('startTime') || 0 );
 
             if(elapsed >= LOCK_TIME){
-                ROUTER.PUSH('(modals)/lock')
+                ROUTER.PUSH('/(modals)/lock')
             }
         }
 
