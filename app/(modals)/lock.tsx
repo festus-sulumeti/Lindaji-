@@ -26,8 +26,8 @@ const lock = () => {
       </View>
 
       <View style={styles.numbersView}>
-        <View style={{flexDirection: 'row', justifyContent: 'center', gap: 20}}>
-        {[1,2,3,4,5,6,7,8,9,0].map((number) => (
+        <View style={{flexDirection: 'row'}}>
+        {[1,2,3].map((number) => (
           <Text key={number} style={styles.number} onPress={() => setcode([...code, number])}>{number}</Text>
         ))}
       </View>
