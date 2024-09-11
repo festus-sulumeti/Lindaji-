@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as Haptics from 'expo-haptics';
 
 const lock = () => {
 
@@ -15,6 +16,16 @@ const lock = () => {
     }
   }, [code])
 
+  const onNumberPress = (number: number) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setcode([...code, number]);
+  };
+
+  const numberBasckspace = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setcode(code.slice(0, -1));
+  };
+
   return (
     <SafeAreaView>
       <Text>Welcome back Festus</Text>
@@ -26,12 +37,36 @@ const lock = () => {
       </View>
 
       <View style={styles.numbersView}>
-        <View style={{flexDirection: 'row'}}>
-        {[1,2,3].map((number) => (
-          <Text key={number} style={styles.number} onPress={() => setcode([...code, number])}>{number}</Text>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        {[1, 2,  3].map((number) => (
+          <TouchableOpacity key={number} onPress={() => onNumberPress(number)}>
+              <Text  style={styles.number}>{number}</Text>
+          </TouchableOpacity>
         ))}
       </View>
-    </View>
+      </View>
+
+      <View style={styles.numbersView}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        {[4, 5, 6].map((number) => (
+          <TouchableOpacity key={number} onPress={() => onNumberPress(number)}>
+              <Text  style={styles.number}>{number}</Text>
+          </TouchableOpacity>
+        
+        ))}
+      </View>
+      </View>
+
+      <View style={styles.numbersView}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        {[7, 8, 9].map((number) => (
+          <TouchableOpacity key={number} onPress={() => onNumberPress(number)}>
+              <Text  style={styles.number}>{number}</Text>
+          </TouchableOpacity>
+        
+        ))}
+      </View>
+      </View>
     </SafeAreaView>
   )
 };
