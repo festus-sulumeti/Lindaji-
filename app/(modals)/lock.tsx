@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'expo-router';
-import { SafeAreaView, View, Text, Stylesheet } from 'react-native-safe-area-context';
+import { SafeAreaView, Stylesheet } from 'react-native-safe-area-context';
 
 const lock = () => {
 
@@ -23,6 +23,12 @@ const lock = () => {
 };
 
 const styles = Stylesheet.create({
+  greeting: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop:80,
+    alignSelf: 'center'
+  }
 
 });
 
