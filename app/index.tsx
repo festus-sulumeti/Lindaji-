@@ -57,7 +57,7 @@ const Home = () => {
 
     if (result.success) {
       Alert.alert('Authentication successful', 'Welcome back!');
-      router.push('/dashboard');
+      router.push('/Dashboard');
     } else {
       Alert.alert('Authentication failed', 'Please try again.');
     }
