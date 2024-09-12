@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     if (code.length === 6) {
       if (code.join('') === '123456') {
-        router.push('/dashboard');
+        router.push('/components/Dashboard');
         setCode([]);
       } else {
         setCode([]);
@@ -57,7 +57,7 @@ const Home = () => {
 
     if (result.success) {
       Alert.alert('Authentication successful', 'Welcome back!');
-      router.push('/Dashboard');
+      router.push('/components/Dashboard');
     } else {
       Alert.alert('Authentication failed', 'Please try again.');
     }
