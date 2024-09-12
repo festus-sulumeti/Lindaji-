@@ -4,9 +4,7 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-// Import for reanimated
 import { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
-// Import LocalAuthentication for Face ID
 import * as LocalAuthentication from 'expo-local-authentication';
 
 const Home = () => {
@@ -53,13 +51,13 @@ const Home = () => {
     }
 
     const result = await LocalAuthentication.authenticateAsync({
-      promptMessage: 'Authenticate with Face ID',
+      promptMessage: 'Authenticate with Face ID or fingerprint',
       fallbackLabel: 'Use your passcode',
     });
 
     if (result.success) {
       Alert.alert('Authentication successful', 'Welcome back!');
-      router.push('/dashboard'); // Navigate to the dashboard
+      router.push('/dashboard');
     } else {
       Alert.alert('Authentication failed', 'Please try again.');
     }
@@ -106,7 +104,7 @@ const Home = () => {
 
         <View style={styles.bottomRow}>
           <TouchableOpacity onPress={onBiometricPress} style={styles.biometricIcon}>
-            <MaterialCommunityIcons name="face-recognition" size={26} color="black" />
+            <MaterialCommunityIcons name="fingerprint" size={26} color="black" />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => onNumberPress(0)}>
