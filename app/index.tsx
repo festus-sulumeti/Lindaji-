@@ -119,7 +119,9 @@ const Home = () => {
         </View>
       </View>
 
-      <Text style={styles.forgotPasscodeText}>Forgot your passcode?</Text>
+      <Text style={styles.forgotPasscodeText} onPress={() => router.push('/ForgotPasscode')}>
+            Forgot your passcode?
+      </Text>
     </SafeAreaView>
   );
 };
