@@ -51,6 +51,11 @@ const ForgotPasscode = () => {
       <TouchableOpacity onPress={handlePasscodeReset} style={styles.button}>
         <Text style={styles.buttonText}>Reset Passcode</Text>
       </TouchableOpacity>
+
+      {/* Go Back Link */}
+      <TouchableOpacity onPress={() => router.back()} style={styles.goBack}>
+        <Text style={styles.goBackText}>Remember your passcode? Go Back</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -86,6 +91,15 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: '600',
+  },
+  goBack: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  goBackText: {
+    color: '#303BED',
+    fontWeight: '500',
+    fontSize: 16,
   },
 });
 
