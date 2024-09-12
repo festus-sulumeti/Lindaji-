@@ -4,15 +4,31 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// Import from reanimated
+import { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
 
 const Home = () => {
   const [code, setcode] = useState<number[]>([]);
   const codeLength = Array(6).fill(0);
   const router = useRouter();
 
+  const offset = useSharedValue(0);
+
+  
+  const style = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: offset.value }],
+    };
+  });
+
   useEffect(() => {
     if (code.length === 6) {
-      // router.back();
+      if (code.join('') === '123456') {
+        router.push('/dashboard');
+        setcode([]);
+      } else {
+        setcode([]);
+      }
     }
   }, [code]);
 
@@ -144,7 +160,7 @@ const styles = StyleSheet.create({
     color: '#303BED',
     fontWeight: '500',
     fontSize: 18,
-    marginTop: 30, // Space between the number grid and the text
+    marginTop: 30, 
   },
 
   bottomRow: {
