@@ -1,20 +1,20 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { useState, useEffect } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-// Import from reanimated
+// Import for reanimated
 import { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
+// Import LocalAuthentication for Face ID
+import * as LocalAuthentication from 'expo-local-authentication';
 
 const Home = () => {
-  const [code, setcode] = useState<number[]>([]);
+  const [code, setCode] = useState<number[]>([]);
   const codeLength = Array(6).fill(0);
   const router = useRouter();
 
   const offset = useSharedValue(0);
-
-  
   const style = useAnimatedStyle(() => {
     return {
       transform: [{ translateY: offset.value }],
@@ -25,24 +25,45 @@ const Home = () => {
     if (code.length === 6) {
       if (code.join('') === '123456') {
         router.push('/dashboard');
-        setcode([]);
+        setCode([]);
       } else {
-        setcode([]);
+        setCode([]);
+        Alert.alert('Incorrect Passcode', 'Please try again.');
       }
     }
   }, [code]);
 
   const onNumberPress = (number: number) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    setcode([...code, number]);
+    setCode([...code, number]);
   };
 
-  const numberBasckspace = () => {
+  const numberBackspace = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    setcode(code.slice(0, -1));
+    setCode(code.slice(0, -1));
   };
 
-  const onBiometricPress = () => {};
+  const onBiometricPress = async () => {
+    const compatible = await LocalAuthentication.hasHardwareAsync();
+    const biometricRecords = await LocalAuthentication.isEnrolledAsync();
+
+    if (!compatible || !biometricRecords) {
+      Alert.alert('Biometric Authentication not available', 'Please set up Face ID or fingerprint in your phone settings.');
+      return;
+    }
+
+    const result = await LocalAuthentication.authenticateAsync({
+      promptMessage: 'Authenticate with Face ID',
+      fallbackLabel: 'Use your passcode',
+    });
+
+    if (result.success) {
+      Alert.alert('Authentication successful', 'Welcome back!');
+      router.push('/dashboard'); // Navigate to the dashboard
+    } else {
+      Alert.alert('Authentication failed', 'Please try again.');
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -93,7 +114,7 @@ const Home = () => {
           </TouchableOpacity>
 
           {code.length > 0 && (
-            <TouchableOpacity onPress={numberBasckspace} style={styles.backspaceIcon}>
+            <TouchableOpacity onPress={numberBackspace} style={styles.backspaceIcon}>
               <MaterialCommunityIcons name="backspace" size={26} color="black" />
             </TouchableOpacity>
           )}
@@ -121,34 +142,34 @@ const styles = StyleSheet.create({
   },
 
   codeEmpty: {
-    width: 25, 
-    height: 25, 
+    width: 25,
+    height: 25,
     borderRadius: 12.5,
     borderWidth: 2,
-    borderColor: '#ccc', 
-    marginHorizontal: 5, 
+    borderColor: '#ccc',
+    marginHorizontal: 5,
   },
 
   numbersView: {
-    marginHorizontal: 40, 
-    marginVertical: 20, 
+    marginHorizontal: 40,
+    marginVertical: 20,
   },
 
   number: {
-    fontSize: 32, 
+    fontSize: 32,
     fontWeight: '600',
     textAlign: 'center',
-    width: 60, 
-    height: 60, 
-    backgroundColor: '#f0f0f0', 
+    width: 60,
+    height: 60,
+    backgroundColor: '#f0f0f0',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    lineHeight: 60, 
+    lineHeight: 60,
   },
 
   biometricIcon: {
-    padding: 10, 
+    padding: 10,
   },
 
   backspaceIcon: {
@@ -160,7 +181,7 @@ const styles = StyleSheet.create({
     color: '#303BED',
     fontWeight: '500',
     fontSize: 18,
-    marginTop: 30, 
+    marginTop: 30,
   },
 
   bottomRow: {
