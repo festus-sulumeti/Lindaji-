@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, Touchable } from 'react-native'
+import { View, Text, StyleSheet,  TouchableOpacity } from 'react-native'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Haptics from 'expo-haptics';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const lock = () => {
 
